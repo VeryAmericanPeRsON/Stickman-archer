@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Stickman Archer</title>
+    <style>
+        body { margin: 0; background: #222; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; font-family: sans-serif; }
+        canvas { background: #eee; box-shadow: 0 0 10px rgba(0,0,0,0.5); max-width: 100%; max-height: 100%; }
+        #controls { position: absolute; bottom: 20px; color: white; }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="800" height="400"></canvas>
+    <div id="controls">Tap and Drag to Aim & Shoot</div>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        // Basic game loop loop skeleton goes here
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // Draw Grey Stick Figure Base
+            ctx.strokeStyle = '#666'; ctx.lineWidth = 4;
+            ctx.beginPath(); ctx.arc(100, 200, 15, 0, Math.PI * 2); ctx.stroke(); // Head
+            ctx.moveTo(100, 215); ctx.lineTo(100, 260); // Body
+            ctx.moveTo(100, 260); ctx.lineTo(85, 300); ctx.moveTo(100, 260); ctx.lineTo(115, 300); // Legs
+            ctx.moveTo(100, 230); ctx.lineTo(130, 230); // Arm holding bow
+            ctx.stroke();
+        }
+        setInterval(draw, 1000/60); // 60 FPS Loop
